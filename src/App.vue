@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="grey darken-3" dark>
+    <v-app-bar app color="red darken-1" dark>
       <v-app-bar-nav-icon
         @click="drawer = true"
         class="d-flex d-md-none"
@@ -11,7 +11,7 @@
           tag="span"
           style="cursor: pointer; align-item: center; display: flex"
         >
-          <v-icon large color="red"> mdi-cellphone</v-icon>
+          <v-icon large color="black"> mdi-cellphone</v-icon>
           <span class="display-1"> CellPhone</span>
         </router-link>
       </div>
@@ -27,15 +27,20 @@
       >
       </v-text-field>
       <v-btn :ripple="false" icon
-        ><v-icon large color="red"> mdi-magnify</v-icon></v-btn
+        ><v-icon large color="black"> mdi-magnify</v-icon></v-btn
       >
       <v-btn-toggle title group>
         <v-btn :ripple="false" to="/" class="d-none d-md-flex">Inicio</v-btn>
         <v-btn :ripple="false" to="/estadisticas" class="d-none d-md-flex"
           >Estadisticas</v-btn >
+        <v-btn class="icon" :ripple="false" to="/nuevo-anuncio">
+          <v-badge color="white">
+            <v-icon large color="black"> mdi-plus-circle-outline </v-icon>
+          </v-badge>
+        </v-btn>
         <v-btn class="icon" :ripple="false" to="/carrito">
-          <v-badge color="green">
-            <v-icon large color="red"> mdi-cart-outline </v-icon>
+          <v-badge color="white">
+            <v-icon large color="black"> mdi-cart-outline </v-icon>
           </v-badge>
         </v-btn>
       </v-btn-toggle>
@@ -63,7 +68,7 @@
             </v-list-item-icon>
             <v-list-item-content>Estadisticas</v-list-item-content>
           </v-list-item>
-          <v-list-item to="/anuncio">
+          <v-list-item to="/nuevo-anuncio">
             <v-list-item-icon>
               <v-icon large color="red"> mdi-plus</v-icon>
             </v-list-item-icon>
@@ -92,12 +97,6 @@ export default {
         active: true,
       },
       {
-        icon: "info",
-        text: "About",
-        title: "About this demo",
-        active: false,
-      },
-      {
         icon: "assignment_turned_in",
         text: "Todos",
         title: "Some stuff that needs doing",
@@ -107,3 +106,9 @@ export default {
   }),
 };
 </script>
+<!-- {
+        icon: "info",
+        text: "About",
+        title: "About this demo",
+        active: false,
+      },-->

@@ -90,7 +90,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="red" text @click="dialog = false">
-                Agree
+                OK
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -200,36 +200,34 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Samsung A21 </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$325</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Huawei Y9 </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$365</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -244,36 +242,34 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Nokia Z9 </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$285</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Iphone X </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$579</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -288,36 +284,34 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Samsung S10 </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$479</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Xiaomi 9S </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$431</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -332,36 +326,34 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0"> Nokia Flip </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$265</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
               <v-img
                 height="150px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
               >
               </v-img>
-              <v-card-subtitle class="pb-0"> Number 10 </v-card-subtitle>
+              <v-card-subtitle class="pb-0">Iphone 12 </v-card-subtitle>
               <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-                <div>Whitsunday Island, Whitsunday Islands</div>
+                <div>$875</div>
+                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Comprar </v-btn>
+                <v-btn color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -384,6 +376,17 @@ export default {
       page: 1,
       dialog: false,
       nuevo: false,
+
+      loading: false,
+      selection: 1,
+      
+    methods: {
+      reserve () {
+        this.loading = true
+
+        setTimeout(() => (this.loading = false), 2000)
+      },
+    },
     };
   },
 };

@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <modal ref="modal"></modal>
     <v-app-bar app color="red darken-1" dark>
       <v-app-bar-nav-icon
         @click="drawer = true"
@@ -18,6 +19,7 @@
       <v-text-field
         v-model="search"
         placeholder="Buscar"
+        clearable
         hide-details
         outlined
         rounded
@@ -33,7 +35,7 @@
         <v-btn :ripple="false" to="/" class="d-none d-md-flex">Inicio</v-btn>
         <v-btn :ripple="false" to="/estadisticas" class="d-none d-md-flex"
           >Estadisticas</v-btn >
-        <v-btn class="icon" :ripple="false" to="/nuevo-anuncio">
+        <v-btn class="icon" :ripple="false" @click="abrirModal">
           <v-badge color="white">
             <v-icon large color="black"> mdi-plus-circle-outline </v-icon>
           </v-badge>
@@ -68,7 +70,7 @@
             </v-list-item-icon>
             <v-list-item-content>Estadisticas</v-list-item-content>
           </v-list-item>
-          <v-list-item to="/nuevo-anuncio">
+          <v-list-item @click="abrirModal">
             <v-list-item-icon>
               <v-icon large color="red"> mdi-plus</v-icon>
             </v-list-item-icon>
@@ -82,7 +84,11 @@
 </template>
 
 <script>
+import modal from "./components/modal.vue"
 export default {
+  components: {
+    modal,
+  },
   name: "App",
 
   data: () => ({
@@ -104,6 +110,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    abrirModal() {
+      this.$refs.modal.dialog = true;
+    },
+  },
 };
 </script>
 <!-- {

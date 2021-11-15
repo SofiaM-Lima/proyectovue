@@ -4,8 +4,6 @@
       <!--Aqui empeiza el carrousel-->
       <v-container>
         <br />
-        <br />
-        <br />
         <v-carousel>
           <v-carousel-item
             v-for="(item, i) in items"
@@ -22,7 +20,7 @@
     <v-col md="6">
       <v-container>
         <br />
-        <br />
+
         <v-card class="mx-auto my-12" max-width="474">
           <h2 align="center">
             Iphone 6 pantalla de 8 pulgadas, 64 Gb internos, 2 Gb de Ram, Solo

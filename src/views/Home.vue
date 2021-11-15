@@ -2,10 +2,6 @@
   <div>
     <!--Modal para lo del boton de celular-->
     <div class="hidden-md-and-up">
-      <br />
-      <br />
-      <br />
-      <br />
       <v-row justify="center">
         <v-btn color="grey darken-3" dark @click.stop="dialog = true">
           <v-icon color="red">mdi-filter</v-icon>
@@ -102,9 +98,6 @@
       <v-col md="3" class="hidden-md-and-down">
         <div>
           <v-container>
-            <br />
-            <br />
-            <br />
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
             <fieldset>
               <legend>Marca</legend>
@@ -197,9 +190,6 @@
             <br />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
@@ -212,7 +202,7 @@
                 <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
+              <v-btn :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
@@ -237,9 +227,7 @@
       <v-row>
         <v-col md="2.25">
           <div>
-            <br />
-            <br />
-            <br />
+    
             <br />
             <br />
             <v-card max-width="200">
@@ -281,9 +269,6 @@
           <div>
             <br />
             <br />
-            <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
@@ -321,9 +306,6 @@
       <v-row>
         <v-col md="2.25">
           <div>
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <v-card max-width="200">

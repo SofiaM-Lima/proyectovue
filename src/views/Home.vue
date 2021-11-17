@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--Modal para lo del boton de celular-->
-    <div class="hidden-md-and-up">
+    <div class="hidden-md-and-up" style="margin-top:25%">
       <v-row justify="center">
         <v-btn color="grey darken-3" dark @click.stop="dialog = true">
           <v-icon color="red">mdi-filter</v-icon>
@@ -95,7 +95,7 @@
     </div>
     <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca-->
     <v-row>
-      <v-col md="3" class="hidden-md-and-down">
+      <v-col md="3" class="hidden-md-and-down" style="margin-top:6%">
         <div>
           <v-container>
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
@@ -184,12 +184,9 @@
         </div>
       </v-col>
       <!--Aqui se empiezan con las card esta es la primera-->
-      <v-row>
+      <v-row style="margin-top:13%">
         <v-col md="2.25">
           <div>
-            <br />
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
@@ -224,12 +221,9 @@
         </v-col>
       </v-row>
       <!--Estas serian la segunda card-->
-      <v-row>
-        <v-col md="2.25">
+      <v-row style="margin-top:13%">
+        <v-col md="2.25" >
           <div>
-    
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
@@ -264,11 +258,9 @@
         </v-col>
       </v-row>
       <!--Estas serian la tercera card-->
-      <v-row>
+      <v-row style="margin-top:13%">
         <v-col md="2.25">
           <div>
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"
@@ -303,11 +295,9 @@
         </v-col>
       </v-row>
       <!--Estas serian la cuarta card-->
-      <v-row>
+      <v-row style="margin-top:13%">
         <v-col md="2.25">
           <div>
-            <br />
-            <br />
             <v-card max-width="200">
               <v-img
                 height="150px"

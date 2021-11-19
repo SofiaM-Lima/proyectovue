@@ -95,7 +95,7 @@
     </div>
     <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca-->
     <v-row>
-      <v-col md="3" class="hidden-md-and-down" style="margin-top:6%">
+      <v-col md="3" class="hidden-md-and-down" style="margin-top:3%">
         <div>
           <v-container>
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
@@ -184,7 +184,7 @@
         </div>
       </v-col>
       <!--Aqui se empiezan con las card esta es la primera-->
-      <v-row style="margin-top:13%">
+      <v-row style="margin-top:9%">
         <v-col md="2.25">
           <div>
             <v-card max-width="200">
@@ -214,14 +214,14 @@
                 <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
+                <v-btn  :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
           </div>
         </v-col>
       </v-row>
       <!--Estas serian la segunda card-->
-      <v-row style="margin-top:13%">
+      <v-row style="margin-top:9%">
         <v-col md="2.25" >
           <div>
             <v-card max-width="200">
@@ -236,7 +236,7 @@
                 <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
+                <v-btn  :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
               </v-card-actions>
             </v-card>
             <v-card max-width="200">
@@ -258,7 +258,7 @@
         </v-col>
       </v-row>
       <!--Estas serian la tercera card-->
-      <v-row style="margin-top:13%">
+      <v-row style="margin-top:9%">
         <v-col md="2.25">
           <div>
             <v-card max-width="200">
@@ -295,7 +295,7 @@
         </v-col>
       </v-row>
       <!--Estas serian la cuarta card-->
-      <v-row style="margin-top:13%">
+      <v-row style="margin-top:9%">
         <v-col md="2.25">
           <div>
             <v-card max-width="200">

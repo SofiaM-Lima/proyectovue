@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <modal ref="modal"></modal>
+    <modal ref="modal" ></modal>
     <v-app-bar app color="red darken-1" dark>
       <v-app-bar-nav-icon
         @click="drawer = true"
@@ -79,7 +79,9 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
+    <v-main>
     <router-view />
+    </v-main>
   </v-app>
 </template>
 

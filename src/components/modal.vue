@@ -19,8 +19,8 @@
         </v-toolbar>
 
         <v-container class="white" style="margin-top: 1%">
-          <v-row>
-            <v-col cols="6" sm="6" md="6">
+          <v-row >
+            <v-col cols="12" sm="6" md="6">
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-select
                   v-model="select"
@@ -83,7 +83,7 @@
               </v-form>
             </v-col>
 
-            <v-col cols="6" md="6" sm="6">
+            <v-col cols="12" md="6" sm="6">
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
                   v-model="name"
@@ -119,8 +119,10 @@
 
                 <v-col
                   cols="12"
-                  md="5"
-                  style="margin-left: 35%; margin-top: 5%"
+                  md="6"
+                  sm="6"
+                  style="margin-left:25%; margin-top: 5%"
+                 
                 >
                   <v-text-field
                     v-model="precio"
@@ -130,7 +132,7 @@
                   ></v-text-field>
                 </v-col>
 
-                <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:35%"> Cancelar </v-btn>
+                <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:27%"> Cancelar </v-btn>
                  <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:10%"> Crear </v-btn>
               </v-form>
             </v-col>

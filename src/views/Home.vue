@@ -1,8 +1,12 @@
 <template>
   <div>
     <!--Modal para lo del boton de celular-->
-    <div class="hidden-md-and-up" style="margin-top:25%">
+    <div class="hidden-md-and-up" style="margin-top: 15%">
       <v-row justify="center">
+        <v-col cols="4">
+          <div class="text-subtitle-2">Ordenar por:</div>
+          <v-btn color="red" small> <v-icon>mdi-arrow-up</v-icon>Precio </v-btn>
+        </v-col>
         <v-btn color="grey darken-3" dark @click.stop="dialog = true">
           <v-icon color="red">mdi-filter</v-icon>
         </v-btn>
@@ -85,9 +89,7 @@
             </form>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false">
-                OK
-              </v-btn>
+              <v-btn color="red" text @click="dialog = false"> OK </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -95,7 +97,7 @@
     </div>
     <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca-->
     <v-row>
-      <v-col md="3" class="hidden-md-and-down" style="margin-top:3%">
+      <v-col md="3" class="hidden-md-and-down" style="margin-top: 3%">
         <div>
           <v-container>
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
@@ -184,151 +186,9 @@
         </div>
       </v-col>
       <!--Aqui se empiezan con las card esta es la primera-->
-      <v-row style="margin-top:9%">
-        <v-col md="2.25">
-          <div>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Samsung A21 </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$325</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-              <v-btn :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Huawei Y9 </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$365</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn  :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
-      <!--Estas serian la segunda card-->
-      <v-row style="margin-top:9%">
-        <v-col md="2.25" >
-          <div>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Nokia Z9 </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$285</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn  :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Iphone X </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$579</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
-      <!--Estas serian la tercera card-->
-      <v-row style="margin-top:9%">
-        <v-col md="2.25">
-          <div>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Samsung S10 </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$479</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Xiaomi 9S </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$431</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
-      <!--Estas serian la cuarta card-->
-      <v-row style="margin-top:9%">
-        <v-col md="2.25">
-          <div>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0"> Nokia Flip </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$265</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card max-width="200">
-              <v-img
-                height="150px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-              <v-card-subtitle class="pb-0">Iphone 12 </v-card-subtitle>
-              <v-card-text class="text--primary">
-                <div>$875</div>
-                <div>Celular en buen estado, si desea saber mas detalles presiones en detalles</div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="orange" text> Detalles </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
+      <v-row style="margin-top: 9%">
+        <v-col cols="6" md="3" v-for="i in anuncios" :key="i.titulo">
+          <cards :anuncio="i"></cards>
         </v-col>
       </v-row>
     </v-row>
@@ -336,30 +196,39 @@
     <div class="text-left">
       <br />
       <br />
-      <v-pagination v-model="page" :length="6"></v-pagination>
+      <v-pagination v-model="page" :length="3"></v-pagination>
     </div>
   </div>
 </template>
 
 <script>
+import Cards from "../components/Cards.vue";
+import { db } from "../db";
 export default {
   data() {
     return {
+      anuncios: [],
       page: 1,
       dialog: false,
       nuevo: false,
 
       loading: false,
       selection: 1,
-      
-    methods: {
-      reserve () {
-        this.loading = true
 
-        setTimeout(() => (this.loading = false), 2000)
+      methods: {
+        reserve() {
+          this.loading = true;
+
+          setTimeout(() => (this.loading = false), 2000);
+        },
       },
-    },
     };
+  },
+  firestore: {
+    anuncios: db.collection("anuncio"),
+  },
+  components: {
+    Cards,
   },
 };
 </script>

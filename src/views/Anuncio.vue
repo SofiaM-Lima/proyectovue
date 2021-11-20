@@ -2,9 +2,8 @@
   <v-row>
     <v-col md="6">
       <!--Aqui empeiza el carrousel-->
-      <v-container>
-        
-        <v-carousel style="margin-top: 15%">
+      <v-container>     
+        <v-carousel style="margin-top: 6%">
           <v-carousel-item
             v-for="(item, i) in items"
             :key="i"
@@ -17,7 +16,7 @@
       <h1 align="center" class="hidden-md-and-down">DESCRIPCION</h1>
     </v-col>
 
-    <v-col md="6" style="margin-top: 15%">
+    <v-col md="6" style="margin-top: 10%">
       <v-container>
         <h2 align="center">
           Iphone 6 pantalla de 8 pulgadas, 64 Gb internos, 2 Gb de Ram, Solo
@@ -57,7 +56,7 @@
         </v-card>
       </v-col>
       <v-col
-        cols="6"
+        cols="12"
         md="6"
       >
         <v-card

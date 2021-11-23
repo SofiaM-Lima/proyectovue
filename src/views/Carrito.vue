@@ -1,18 +1,40 @@
 <template>
-  <v-container class="grey lighten-5">
-    <v-row no-gutters>
-      <v-col cols="6" sm="6" md="8">
-        <v-card class="pa-2" outlined tile max-width="150">
-          <v-img
-                height="100px"
-                src="https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg"
-              >
-              </v-img>
-        </v-card>
-      </v-col>
-      <v-col cols="6" md="4">
-        <v-card class="pa-2" outlined tile> .col-6 .col-md-4 </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+    <v-footer >
+      <v-card flat tile width="100%" class="black white--text text-center">
+        <v-card-text>
+          <v-btn v-for="icon in icons" :key="icon" class="white--text" icon>
+            <v-icon size="24px">
+              {{ icon }}
+            </v-icon>
+          </v-btn>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          Desarrollado por:
+          <strong> Natalia Sofia Martinez Lima ML17002</strong>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          Fundamentos de la programaciòn en internet 
+          <strong> Universidad de El Salvador</strong>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          {{ new Date().getFullYear() }} — <strong>© All Right Reserved</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
 </template>
+
+<script>
+ export default {
+    data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
+    }),
+  }
+</script>

@@ -1,11 +1,15 @@
 <template>
   <div>
     <v-card max-width="200px">
+      <router-link
+        :to="{ name: 'Anuncio', params: { id: anuncio.id } }"
+        class="text-decoration-none "
+      >
       <v-img
         height="180px"
         :src="anuncio.imagen [0]"
-      >
-      </v-img>
+      />
+      </router-link>
       <v-card-subtitle class="pb-0"> {{anuncio.marca}} </v-card-subtitle>
       <v-card-text class="text--primary ">
         <div>{{anuncio.precio}}</div>
@@ -18,10 +22,12 @@
       </v-card-actions>
     </v-card>
   </div>
+  
 </template>
 <script >
 export default {
     name: "cards",
     props: ["anuncio"],
+    
 }
 </script>

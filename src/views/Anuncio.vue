@@ -2,7 +2,7 @@
   <v-row>
     <v-col md="6">
       <!--Aqui empeiza el carrousel-->
-      <v-container>     
+      <v-container>
         <v-carousel style="margin-top: 6%">
           <v-carousel-item
             v-for="(item, i) in items"
@@ -19,69 +19,57 @@
     <v-col md="6" style="margin-top: 10%">
       <v-container>
         <h2 align="center">
-          Iphone 6 pantalla de 8 pulgadas, 64 Gb internos, 2 Gb de Ram, Solo
-          banda Tigo nuevo.
+          {{anuncio.titulo}}
         </h2>
         <br />
-        <h1 align="center">$235</h1>
+        <h1 align="center">${{anuncio.precio}}</h1>
         <br />
         <div class="text-center">
-          <v-btn class="ma-2" outlined color="red"> Comprar </v-btn>
+          <v-btn :to="'/carrito/'" class="ma-2" outlined color="red">
+            Comprar
+          </v-btn>
         </div>
         <br />
-        <p align="center">Vendedor: Juan Perez</p>
-        <p align="center">Telefono: 7374-3543</p>
+        <p align="center">Vendedor: {{anuncio.vendedor}}</p>
+        <p align="center">Telefono: {{anuncio.telefono}}</p>
       </v-container>
     </v-col>
-    
-  <v-container class="grey lighten-5">
-    <v-row no-gutters>
-      <v-col
-        cols="12"
-        sm="6"
-        md="6"
-      >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-           <p><b>Nuevo:</b> Nuevo</p>
-          <p><b>Marca:</b> Iphone</p>
-          <p><b>Modelo:</b> 6 Plus</p>
-          <p><b>Pantalla:</b> 7 Pulgadas</p>
-          <p><b>Sistema:</b> Ios</p>
-          <p><b>Rom:</b> 64 GB</p>
-          <p><b>Ram:</b> 2 GB</p>
-        </v-card>
-      </v-col>
-      <v-col
-        cols="12"
-        md="6"
-      >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-           <p>
+
+    <v-container class="grey lighten-5">
+      <v-row no-gutters>
+        <v-col cols="12" sm="6" md="6">
+          <v-card class="pa-2" outlined tile>
+            <p><b>Nuevo:</b> Nuevo</p>
+            <p><b>Marca:</b> {{anuncio.marca}}</p>
+            <p><b>Modelo:</b> 6 Plus</p>
+            <p><b>Pantalla:</b> 7 Pulgadas</p>
+            <p><b>Sistema:</b> Ios</p>
+            <p><b>Rom:</b> 64 GB</p>
+            <p><b>Ram:</b> 2 GB</p>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="6">
+          <v-card class="pa-2" outlined tile>
+            <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Praesentium velit, commodi voluptatem debitis eos magni sequi
               minima accusamus esse ut fuga obcaecati laborum. Sapiente atque
               veritatis voluptatum distinctio minus sint! Lorem ipsum dolor sit
               amet consectetur adipisicing elit.
             </p>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-row>
 </template>
 
 <script>
+import {db} from '../db'
 export default {
   data() {
     return {
+      anuncio: {},
       items: [
         {
           src: "https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg",
@@ -97,6 +85,24 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    async traerAnuncio() {
+      try {
+        var res = await db
+          .collection("anuncio")
+          .doc(this.$route.params.id)
+          //.doc("zXWs4nY7YZal7vwe7Ye9")
+
+          .get();
+        this.anuncio = await res.data();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  created() {
+    this.traerAnuncio();
   },
 };
 </script>

@@ -3,14 +3,15 @@
     <!--Modal para lo del boton de celular-->
     <div class="hidden-md-and-up" style="margin-top: 15%">
       <v-row justify="center">
-        <v-col cols="4">
-          <div class="text-subtitle-2">Ordenar por:</div>
-          <v-btn color="red" small> <v-icon>mdi-arrow-up</v-icon>Precio </v-btn>
-        </v-col>
+        <!--<div class="text-subtitle-2">Ordenar por:</div>-->
+        <v-btn color="blue-grey lighten-4" small style="margin-right: 3%">
+          <v-icon>mdi-arrow-up</v-icon>Precio
+        </v-btn>
+
         <v-btn color="grey darken-3" dark @click.stop="dialog = true">
           <v-icon color="red">mdi-filter</v-icon>
         </v-btn>
-        <v-dialog v-model="dialog" max-width="220">
+        <v-dialog v-model="dialog" max-width="200px">
           <v-card>
             <legend>Marca</legend>
             <form action="#">
@@ -101,6 +102,42 @@
         <div>
           <v-container>
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
+            <v-card flat color="transparent">
+              <h3 style="margin-left: 40%">Precio</h3>
+              <v-card-text>
+                <v-row>
+                  <v-col class="px-4">
+                    <v-range-slider
+                      v-model="range"
+                      :max="max"
+                      :min="min"
+                      class="align-center"
+                    >
+                      <template v-slot:prepend>
+                        <v-text-field
+                          :value="range[0]"
+                          class="mt-0 pt-0"
+                          single-line
+                          type="number"
+                          style="width: 60px"
+                          @change="$set(range, 0, $event)"
+                        ></v-text-field>
+                      </template>
+                      <template v-slot:append>
+                        <v-text-field
+                          :value="range[1]"
+                          class="mt-0 pt-0"
+                          single-line
+                          type="number"
+                          style="width: 60px"
+                          @change="$set(range, 1, $event)"
+                        ></v-text-field>
+                      </template>
+                    </v-range-slider>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
             <fieldset>
               <legend>Marca</legend>
               <form action="#">
@@ -185,7 +222,9 @@
           </v-container>
         </div>
       </v-col>
+
       <!--Aqui se empiezan con las card esta es la primera-->
+
       <v-row style="margin-top: 9%">
         <v-col cols="6" md="3" v-for="i in anuncios" :key="i.titulo">
           <cards :anuncio="i"></cards>
@@ -198,8 +237,35 @@
       <br />
       <v-pagination v-model="page" :length="3"></v-pagination>
     </div>
+
+    <v-footer>
+      <v-card flat tile width="100%" class="black white--text text-center">
+        <v-card-text>
+          <v-btn v-for="icon in icons" :key="icon" class="white--text" icon>
+            <v-icon size="24px">
+              {{ icon }}
+            </v-icon>
+          </v-btn>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          Desarrollado por:
+          <strong> Natalia Sofia Martinez Lima ML17002</strong>
+        </v-card-text>
+        <v-card-text class="white--text pt-0">
+          Fundamentos de la programaciòn en internet
+          <strong> Universidad de El Salvador</strong>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          {{ new Date().getFullYear() }} — <strong>© All Right Reserved</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </div>
 </template>
+
 
 <script>
 import Cards from "../components/Cards.vue";
@@ -215,20 +281,36 @@ export default {
       loading: false,
       selection: 1,
 
-      methods: {
-        reserve() {
-          this.loading = true;
+      min: 0,
+      max: 1000,
+      range: [0, 0],
 
-          setTimeout(() => (this.loading = false), 2000);
-        },
-      },
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     };
   },
   firestore: {
-    anuncios: db.collection("anuncio"),
+    //anuncios: db.collection("anuncio"),
   },
   components: {
     Cards,
+  },
+  methods: {
+ 
+    async traerAnuncio() {
+      try {
+        const snapshot = await db.collection("anuncio").get();
+        snapshot.forEach((doc) => {
+          let eventoData = doc.data();
+          eventoData.id = doc.id;
+          this.anuncios.push(eventoData);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  async created() {
+    this.traerAnuncio();
   },
 };
 </script>

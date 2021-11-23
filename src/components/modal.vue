@@ -34,6 +34,7 @@
                   v-model="marca"
                   :rules="marcaRules"
                   label="Marca"
+                  type="text"
                   required
                 ></v-text-field>
 
@@ -41,13 +42,16 @@
                   v-model="modelo"
                   :rules="modeloRules"
                   label="Modelo"
+                  type="text"
                   required
                 ></v-text-field>
 
                 <v-text-field
                   v-model="pantalla"
                   :rules="pantallaRules"
-                  label="Tamaño de la pantalla en pulgadas"
+                  label="Tamaño de la pantalla"
+                  prefix="(Pulgadas)"
+                  type="number"
                   required
                 ></v-text-field>
 
@@ -57,6 +61,7 @@
                   v-model="rom"
                   :rules="romRules"
                   label="Rom (almacenamiento interno)"
+                  type="number"
                   required
                 ></v-text-field>
 
@@ -64,6 +69,8 @@
                   v-model="ram"
                   :rules="ramRules"
                   label="Ram"
+                   prefix="GB"
+                  type="number"
                   required
                 ></v-text-field>
                 <br />
@@ -90,6 +97,7 @@
                   :counter="60"
                   :rules="nameRules"
                   label="Titulo breve del anuncio"
+                  type="text"
                   required
                 ></v-text-field>
 
@@ -98,22 +106,26 @@
                   :counter="40"
                   :rules="vendedorRules"
                   label="Vendedor"
+                  type="text"
                   required
                 ></v-text-field>
 
                 <v-text-field
                   v-model="phoneNumber"
-                  :counter="7"
+                  :counter="8"
                   :rules="telefonoRules"
                   label="Telefono"
+                  prefix="+503"
+                  type="number"
                   required
                 ></v-text-field>
 
                 <v-text-field
                   v-model="descripcion"
-                  :counter="120"
+                  :counter="220"
                   :rules="descripcionRules"
                   label="Descripcion"
+                  type="text"
                   required
                 ></v-text-field>
 
@@ -121,13 +133,14 @@
                   cols="12"
                   md="6"
                   sm="6"
-                  style="margin-left:25%; margin-top: 5%"
-                 
+                  style="margin-left:25%; margin-top: 5%"                 
                 >
                   <v-text-field
                     v-model="precio"
                     :rules="precioRules"
                     label="precio"
+                    prefix="$"
+                    type="number"
                     required
                   ></v-text-field>
                 </v-col>
@@ -186,7 +199,7 @@ export default {
       descripcion: "",
       descripcionRules: [
         (v) => !!v || "Es requerido llenar el campo",
-        (v) => (v && v.length <= 120) || "",
+        (v) => (v && v.length <= 220) || "",
       ],
       marca: "",
       marcaRules: [
@@ -206,12 +219,12 @@ export default {
       rom: "",
       romRules: [
         (v) => !!v || "Es requerido llenar el campo",
-        (v) => (v && v.length <= 20) || "",
+        (v) => (v && v.length <= 4) || "",
       ],
       ram: "",
       ramRules: [
         (v) => !!v || "Es requerido llenar el campo",
-        (v) => (v && v.length <= 20) || "",
+        (v) => (v && v.length <= 4) || "",
       ],
       precio: "",
       precioRules: [

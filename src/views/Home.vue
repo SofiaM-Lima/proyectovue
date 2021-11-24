@@ -98,7 +98,7 @@
     </div>
     <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca-->
     <v-row>
-      <v-col md="3" class="hidden-md-and-down" style="margin-top: 3%">
+      <v-col md="3" class="hidden-md-and-down" style="margin-top: 2%">
         <div>
           <v-container>
             <v-switch class="strech" v-model="nuevo" label="nuevo"></v-switch>
@@ -225,7 +225,7 @@
 
       <!--Aqui se empiezan con las card esta es la primera-->
 
-      <v-row style="margin-top: 9%">
+      <v-row style="margin-top: 8%">
         <v-col cols="6" md="3" v-for="i in anuncios" :key="i.titulo">
           <cards :anuncio="i"></cards>
         </v-col>
@@ -289,14 +289,17 @@ export default {
     };
   },
   firestore: {
-    //anuncios: db.collection("anuncio"),
+    anuncios: db.collection("anuncio"),
   },
   components: {
     Cards,
   },
   methods: {
  
-    async traerAnuncio() {
+  },
+};
+</script>
+<!--  async traerAnuncio() {
       try {
         const snapshot = await db.collection("anuncio").get();
         snapshot.forEach((doc) => {
@@ -307,10 +310,4 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
-  async created() {
-    this.traerAnuncio();
-  },
-};
-</script>
+    },-->

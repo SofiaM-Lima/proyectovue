@@ -35,10 +35,8 @@
         <v-btn :ripple="false" to="/" class="d-none d-md-flex">Inicio</v-btn>
         <v-btn :ripple="false" to="/estadisticas" class="d-none d-md-flex"
           >Estadisticas</v-btn >
-        <v-btn class="icon, hidden-md-and-down" :ripple="false" @click="abrirModal">
-          <v-badge color="white">
-            <v-icon large color="black"> mdi-plus-circle-outline </v-icon>
-          </v-badge>
+        <v-btn class="icon, hidden-md-and-down" :ripple="false" @click="abrirModal">     
+            <v-icon large color="black"> mdi-plus-circle-outline </v-icon>       
         </v-btn>
         <v-btn class="icon" :ripple="false" to="/carrito">
           <v-badge color="white">

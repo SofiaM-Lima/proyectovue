@@ -146,7 +146,6 @@
                 </v-col>
 
                 <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:27%"> Cancelar </v-btn>
-                 <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:10%"> Crear </v-btn>
               </v-form>
             </v-col>
           </v-row>

@@ -12,13 +12,13 @@
       </router-link>
       <v-card-subtitle class="pb-0"> {{anuncio.marca}} </v-card-subtitle>
       <v-card-text class="text--primary ">
-        <div>{{anuncio.precio}}</div>
+        <div>${{anuncio.precio}}</div>
         <div class="text-truncate" >
           {{anuncio.descripcion}}
         </div>
       </v-card-text>
       <v-card-actions>
-        <v-btn :to="'/anuncio/'" color="orange" text> Detalles </v-btn>
+        <v-btn :to="'/carrito/'" color="orange" text><v-icon>mdi-cart-outline</v-icon> Agregar al carro </v-btn>
       </v-card-actions>
     </v-card>
   </div>

@@ -5,9 +5,9 @@
       <v-container>
         <v-carousel style="margin-top: 6%">
           <v-carousel-item
-            v-for="(item, i) in items"
+          v-for="(item, i) in items"
             :key="i"
-            :src="item.src"
+           :src="anuncio.imagen [0]"
             reverse-transition="fade-transition"
             transition="fade-transition"
           ></v-carousel-item>
@@ -22,7 +22,7 @@
           {{anuncio.titulo}}
         </h2>
         <br />
-        <h1 align="center">${{anuncio.precio}}</h1>
+        <h1 align="center"> ${{anuncio.precio}}</h1>
         <br />
         <div class="text-center">
           <v-btn :to="'/carrito/'" class="ma-2" outlined color="red">
@@ -39,23 +39,19 @@
       <v-row no-gutters>
         <v-col cols="12" sm="6" md="6">
           <v-card class="pa-2" outlined tile>
-            <p><b>Nuevo:</b> Nuevo</p>
-            <p><b>Marca:</b> {{anuncio.marca}}</p>
-            <p><b>Modelo:</b> 6 Plus</p>
-            <p><b>Pantalla:</b> 7 Pulgadas</p>
-            <p><b>Sistema:</b> Ios</p>
-            <p><b>Rom:</b> 64 GB</p>
-            <p><b>Ram:</b> 2 GB</p>
+            <p><b><v-icon>mdi-robot-confused-outline</v-icon> Estado:</b> {{anuncio.estado}}</p>
+            <p><b><v-icon>mdi-cellphone-marker</v-icon> Marca:</b> {{anuncio.marca}}</p>
+            <p><b><v-icon>mdi-globe-model</v-icon> Modelo:</b> {{anuncio.modelo}} </p>
+            <p><b><v-icon>mdi-cellphone-screenshot</v-icon> Pantalla</b> {{anuncio.pantalla}} </p>
+            <p><b><v-icon>mdi-android</v-icon> Sistema:</b> {{anuncio.sistema}} </p>
+            <p><b><v-icon>mdi-database-marker</v-icon> Rom:</b> {{anuncio.rom}} </p>
+            <p><b><v-icon>mdi-database-marker-outline</v-icon> Ram:</b> {{anuncio.ram}} </p>
           </v-card>
         </v-col>
         <v-col cols="12" md="6">
           <v-card class="pa-2" outlined tile>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Praesentium velit, commodi voluptatem debitis eos magni sequi
-              minima accusamus esse ut fuga obcaecati laborum. Sapiente atque
-              veritatis voluptatum distinctio minus sint! Lorem ipsum dolor sit
-              amet consectetur adipisicing elit.
+              {{anuncio.descripcion}}
             </p>
           </v-card>
         </v-col>
@@ -76,12 +72,6 @@ export default {
         },
         {
           src: "https://www.thegamertemple.com/wp-content/uploads/2019/08/lgdgalaxyf3-4d03c24b6dd28d0395ea137660df617a-600x400.jpg",
-        },
-        {
-          src: "https://cdn.forbes.co/2020/11/Xiaomi-1280x720-JPG.jpg",
-        },
-        {
-          src: "https://www.altonivel.com.mx/wp-content/uploads/2018/06/mejores-celulares-2018.jpg",
         },
       ],
     };
@@ -106,3 +96,16 @@ export default {
   },
 };
 </script>
+
+<!-- v-for="(item, i) in items"
+            :key="i"
+            :src="item.src"
+            anuncio: {},
+      items: [
+        {
+          src: "https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg",
+        },
+        {
+          src: "https://www.thegamertemple.com/wp-content/uploads/2019/08/lgdgalaxyf3-4d03c24b6dd28d0395ea137660df617a-600x400.jpg",
+        },
+      ],-->

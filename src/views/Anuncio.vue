@@ -5,9 +5,9 @@
       <v-container>
         <v-carousel style="margin-top: 6%">
           <v-carousel-item
-          v-for="(item, i) in items"
+          v-for="(img, i) in anuncio.imagen"
             :key="i"
-           :src="anuncio.imagen [0]"
+           :src="img"
             reverse-transition="fade-transition"
             transition="fade-transition"
           ></v-carousel-item>
@@ -66,14 +66,6 @@ export default {
   data() {
     return {
       anuncio: {},
-      items: [
-        {
-          src: "https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg",
-        },
-        {
-          src: "https://www.thegamertemple.com/wp-content/uploads/2019/08/lgdgalaxyf3-4d03c24b6dd28d0395ea137660df617a-600x400.jpg",
-        },
-      ],
     };
   },
   methods: {

@@ -1,7 +1,8 @@
 // Conveniently import this file anywhere to use db
 
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBUhl-Ov1WClY54qFxKEcFLX1fi9ekK7ZY",
@@ -13,10 +14,9 @@ const firebaseConfig = {
     measurementId: "G-EKZ2JMKQL7"
   };
 
-export const db = firebase
-    .initializeApp(firebaseConfig)
-    .firestore()
-
+  const app = firebase.initializeApp(firebaseConfig);
+  export const db = app.firestore();
+  export const st = app.storage();
 
 // Export types that exists in Firestore - Uncomment if you need them in your app
 // const { Timestamp, GeoPoint } = firebase.firestore

@@ -105,37 +105,6 @@
             <v-card flat color="transparent">
               <h3 style="margin-left: 40%">Precio</h3>
               <v-card-text>
-                <v-row>
-                  <v-col class="px-4">
-                    <v-range-slider
-                      v-model="range"
-                      :max="max"
-                      :min="min"
-                      class="align-center"
-                    >
-                      <template v-slot:prepend>
-                        <v-text-field
-                          :value="range[0]"
-                          class="mt-0 pt-0"
-                          single-line
-                          type="number"
-                          style="width: 60px"
-                          @change="$set(range, 0, $event)"
-                        ></v-text-field>
-                      </template>
-                      <template v-slot:append>
-                        <v-text-field
-                          :value="range[1]"
-                          class="mt-0 pt-0"
-                          single-line
-                          type="number"
-                          style="width: 60px"
-                          @change="$set(range, 1, $event)"
-                        ></v-text-field>
-                      </template>
-                    </v-range-slider>
-                  </v-col>
-                </v-row>
               </v-card-text>
             </v-card>
             <fieldset>
@@ -299,15 +268,4 @@ export default {
   },
 };
 </script>
-<!--  async traerAnuncio() {
-      try {
-        const snapshot = await db.collection("anuncio").get();
-        snapshot.forEach((doc) => {
-          let eventoData = doc.data();
-          eventoData.id = doc.id;
-          this.anuncios.push(eventoData);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    },-->
+ 

@@ -19,11 +19,11 @@
         </v-toolbar>
 
         <v-container class="white" style="margin-top: 1%">
-          <v-row >
+          <v-row>
             <v-col cols="12" sm="6" md="6">
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-select
-                  v-model="select"
+                  v-model="nuevo.estado"
                   :items="items"
                   :rules="[(v) => !!v || 'es requerido llenar este campo']"
                   label="Estado"
@@ -31,7 +31,7 @@
                 ></v-select>
 
                 <v-text-field
-                  v-model="marca"
+                  v-model="nuevo.marca"
                   :rules="marcaRules"
                   label="Marca"
                   type="text"
@@ -39,7 +39,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="modelo"
+                  v-model="nuevo.modelo"
                   :rules="modeloRules"
                   label="Modelo"
                   type="text"
@@ -47,7 +47,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="pantalla"
+                  v-model="nuevo.pantalla"
                   :rules="pantallaRules"
                   label="Tamaño de la pantalla"
                   prefix="(Pulgadas)"
@@ -55,10 +55,15 @@
                   required
                 ></v-text-field>
 
-                <v-select :items="items1" label="Sistema operativo"> </v-select>
+                <v-select
+                  v-model="nuevo.sistema"
+                  :items="items1"
+                  label="Sistema operativo"
+                >
+                </v-select>
 
                 <v-text-field
-                  v-model="rom"
+                  v-model="nuevo.rom"
                   :rules="romRules"
                   label="Rom (almacenamiento interno)"
                   type="number"
@@ -66,15 +71,15 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="ram"
+                  v-model="nuevo.ram"
                   :rules="ramRules"
                   label="Ram"
-                   prefix="GB"
+                  prefix="GB"
                   type="number"
                   required
                 ></v-text-field>
                 <br />
-                <v-file-input label="File input" outlined dense></v-file-input>
+                <v-file-input v-model="imagen" label="File input" outlined dense></v-file-input>
 
                 <v-container>
                   <v-carousel height="250">
@@ -93,7 +98,7 @@
             <v-col cols="12" md="6" sm="6">
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
-                  v-model="name"
+                  v-model="nuevo.titulo"
                   :counter="60"
                   :rules="nameRules"
                   label="Titulo breve del anuncio"
@@ -102,7 +107,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="vendedor"
+                  v-model="nuevo.vendedor"
                   :counter="40"
                   :rules="vendedorRules"
                   label="Vendedor"
@@ -111,7 +116,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="phoneNumber"
+                  v-model="nuevo.telefono"
                   :counter="8"
                   :rules="telefonoRules"
                   label="Telefono"
@@ -121,7 +126,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  v-model="descripcion"
+                  v-model="nuevo.descripcion"
                   :counter="220"
                   :rules="descripcionRules"
                   label="Descripcion"
@@ -133,10 +138,10 @@
                   cols="12"
                   md="6"
                   sm="6"
-                  style="margin-left:25%; margin-top: 5%"                 
+                  style="margin-left: 25%; margin-top: 5%"
                 >
                   <v-text-field
-                    v-model="precio"
+                    v-model="nuevo.precio"
                     :rules="precioRules"
                     label="precio"
                     prefix="$"
@@ -145,10 +150,17 @@
                   ></v-text-field>
                 </v-col>
 
-                <v-btn depressed color="red lighten-4" style="margin-top:8%; margin-left:27%"> Cancelar </v-btn>
+                <v-btn
+                  depressed
+                  color="red lighten-4"
+                  style="margin-top: 8%; margin-left: 27%"
+                >
+                  Cancelar
+                </v-btn>
               </v-form>
             </v-col>
           </v-row>
+          <pre>{{ nuevo }}</pre>
         </v-container>
       </v-card>
     </v-dialog>
@@ -156,9 +168,27 @@
 </template>
 
 <script>
+import { db } from "../db";
 export default {
   data() {
     return {
+      nuevo: {
+        descripcion: "",
+        estado: "",
+        marca: null,
+        modelo: "",
+        pantalla: 0,
+        precio: 0,
+        ram: 0,
+        rom: 0,
+        sistema: null,
+        telefono: 0,
+        titulo: "",
+        vendedor: "",
+        imagenes: [],
+      },
+      imagen:null,
+
       dialog: false,
       notifications: false,
       sound: true,
@@ -234,6 +264,34 @@ export default {
       items: ["Nuevo", "Usado"],
       checkbox: false,
     };
+  },
+  methods: {
+    async enviarBase() {
+      try {
+        let r = await db.collection("anuncio").add(this.nuevo);
+        return r.id;
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
+    },
+    async modificarBase(id) {
+      await db
+        .collection("anuncio")
+        .doc(id)
+        .set(this.nuevo)
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    agregarImagen() {
+      if (this.imagen != null) {
+        this.imagenes.push(this.imagen);
+        this.imagenesUrl.push(URL.createObjectURL(this.imagen));
+        this.imagen = null;
+        this.$refs.formImg.reset();
+      }
+    },
   },
 };
 </script>

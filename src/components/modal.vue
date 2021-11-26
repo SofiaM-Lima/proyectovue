@@ -14,7 +14,7 @@
           <v-toolbar-title>NUEVO ANUNCIO</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark text @click="dialog = false"> Publicar </v-btn>
+            <v-btn dark text @click="crearAnuncio()"> Publicar </v-btn>
           </v-toolbar-items>
         </v-toolbar>
 
@@ -79,14 +79,24 @@
                   required
                 ></v-text-field>
                 <br />
-                <v-file-input v-model="imagen" label="File input" outlined dense></v-file-input>
-
+                <v-form ref="formImg">
+                  <v-file-input
+                    accept="image/png, image/jpeg, image/bmp, image/jpg"
+                    v-model="imagen"
+                    filled
+                    label="File input"
+                    @change="agregarImagen()"
+                    required
+                    outlined
+                    dense
+                  ></v-file-input>
+                </v-form>
                 <v-container>
                   <v-carousel height="250">
                     <v-carousel-item
-                      v-for="(item, i) in items2"
+                      v-for="(item, i) in imagenesUrl"
                       :key="i"
-                      :src="item.src"
+                      :src="item"
                       reverse-transition="fade-transition"
                       transition="fade-transition"
                     ></v-carousel-item>
@@ -150,13 +160,6 @@
                   ></v-text-field>
                 </v-col>
 
-                <v-btn
-                  depressed
-                  color="red lighten-4"
-                  style="margin-top: 8%; margin-left: 27%"
-                >
-                  Cancelar
-                </v-btn>
               </v-form>
             </v-col>
           </v-row>
@@ -168,7 +171,7 @@
 </template>
 
 <script>
-import { db } from "../db";
+import { db, st } from "../db";
 export default {
   data() {
     return {
@@ -185,10 +188,11 @@ export default {
         telefono: 0,
         titulo: "",
         vendedor: "",
-        imagenes: [],
+        imagen: [],
       },
-      imagen:null,
-
+      imagen: null,
+      imagenes: [],
+      imagenesUrl: [],
       dialog: false,
       notifications: false,
       sound: true,
@@ -196,20 +200,7 @@ export default {
       valid: true,
       name: "",
       items1: ["Android", "Ios", "Windows"],
-      items2: [
-        {
-          src: "https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg",
-        },
-        {
-          src: "https://www.thegamertemple.com/wp-content/uploads/2019/08/lgdgalaxyf3-4d03c24b6dd28d0395ea137660df617a-600x400.jpg",
-        },
-        {
-          src: "https://cdn.forbes.co/2020/11/Xiaomi-1280x720-JPG.jpg",
-        },
-        {
-          src: "https://www.altonivel.com.mx/wp-content/uploads/2018/06/mejores-celulares-2018.jpg",
-        },
-      ],
+      items2: [],
       nameRules: [
         (v) => !!v || "Es requerido llenar el campo",
         (v) =>
@@ -290,6 +281,40 @@ export default {
         this.imagenesUrl.push(URL.createObjectURL(this.imagen));
         this.imagen = null;
         this.$refs.formImg.reset();
+      }
+    },
+    async crearAnuncio() {
+      if (
+        this.$refs.form.validate() &&
+        this.imagenes.length > 0 &&
+        this.imagenes.length < 15
+      ) {
+        var temp = 0;
+        let id = await this.enviarBase();
+        this.imagenes.forEach((imagen) => {
+          var archivo = st.ref("/imagenesAnuncios/" + id + "/" + imagen.name);
+          archivo
+            .put(imagen)
+            .then(() => {
+              archivo.getDownloadURL().then((url) => {
+                this.nuevo.imagen.push(url);
+                console.log(url);
+                console.log(this.nuevo);
+                temp++;
+                if (temp == this.imagenes.length) {
+                  this.modificarBase(id);
+                  //this.cancelar();
+                  this.dialog = false;
+                }
+              });
+            })
+            .catch((e) => {
+              console.error(e);
+              //this.cancelar();
+            });
+        });
+      } else {
+        console.error("No valido");
       }
     },
   },

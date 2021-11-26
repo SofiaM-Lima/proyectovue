@@ -5,115 +5,82 @@
         cols="12"
         sm="3"
         class="d-sm-none d-md-flex d-none d-sm-flex"
+        style="margin-top: 2%"
       >
         <div>
-          <div v-for="estado in estados" :key="estado">
-            <v-switch
-              class="strech"
-              v-model="estadoSelect"
-              :label="estado"
-              :value="estado"
-            ></v-switch>
-          </div>
-          <fieldset>
+          
+            <legend>Estado</legend>
+            <form action="">
+              <v-card elevation="2" style="margin-bottom: 20px">
+                <div
+                  class="px-0 py-0 mx-0 my-0"
+                  v-for="estado in estados"
+                  :key="estado"
+                >
+                  <v-col>
+                    <v-switch
+                      color="primary"
+                      class="py-0 my-0"
+                      v-model="estadoSelect"
+                      :label="estado"
+                      :value="estado"
+                    >
+                    </v-switch>
+                  </v-col>
+                </div>
+              </v-card>
+            </form>
             <legend>Marca</legend>
             <form action="#">
-              <p>
-                <label v-for="marca in marcas" :key="marca">
-                  <input
-                    type="checkbox"
-                    v-model="marcaSelect"
-                    :label="marca"
-                    :value="marca"
-                  />
-                  <span> Samsung <sup>15</sup></span>
-                </label>
-              </p>
-              <!--   <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Huawei <sup>10</sup></span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Nokia <sup>56</sup></span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Iphone <sup>4</sup></span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Xiaomi <sup>4</sup></span>
-                  </label>
-                </p> -->
+              <v-card elevation="2" style="margin-bottom: 10px">
+                <div v-for="marca in marcas" :key="marca">
+                  <v-card-text>
+                    <v-checkbox
+                      hide-details
+                      :label="marca"
+                      :value="marca"
+                      v-model="marcaSelect"
+                    ></v-checkbox>
+                  </v-card-text>
+                </div>
+              </v-card>
             </form>
-          </fieldset>
-          <fieldset>
+       
             <legend>Sistema</legend>
             <form action="#">
-              <p>
-                <label v-for="sistema in sistemas" :key="sistema">
-                  <input
-                    type="checkbox"
-                    v-model="sistemaSelect"
-                    :label="sistema"
-                    :value="sistema"
-                  />
-                  <span> Android <sup>15</sup></span>
-                </label>
-              </p>
-              <!-- <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Windows <sup>10</sup></span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> Ios <sup>56</sup></span>
-                  </label>
-                </p> -->
+              <v-card elevation="2" style="margin-bottom: 10px">
+                <div v-for="sistema in sistemas" :key="sistema">
+                  <v-card-text>
+                    <v-checkbox
+                      hide-details
+                      v-model="sistemaSelect"
+                      :label="sistema"
+                      :value="sistema"
+                    ></v-checkbox>
+                  </v-card-text>
+                </div>
+              </v-card>
             </form>
-          </fieldset>
-          <fieldset>
+   
             <legend>Pantalla</legend>
             <form action="#">
-              <p>
-                <label v-for="pantalla in pantallas" :key="pantalla">
-                  <input
-                    type="checkbox"
-                    v-model="pantallaSelect"
-                    :label="pantalla"
-                    :value="pantalla"
-                  />
-                  <span> 6.0</span>
-                </label>
-              </p>
-              <!--   <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> 5.5</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in checkbox-blue" />
-                    <span> 5.0</span>
-                  </label>
-                </p> -->
+              <v-card elevation="2" style="margin-bottom: 10px">
+                <div v-for="pantalla in pantallas" :key="pantalla">
+                  <v-card-text>
+                    <v-checkbox
+                      hide-details
+                      v-model="pantallaSelect"
+                      :label="pantalla"
+                      :value="pantalla"
+                    ></v-checkbox>
+                  </v-card-text>
+                </div>
+              </v-card>           
             </form>
-          </fieldset>
+        
         </div>
       </v-col>
-      <v-col cols="12" sm="9" >
+      <v-col cols="12" sm="9"  style="margin-top: 3%">
         <v-row v-if="!anuncio.length"> </v-row>
         <v-data-iterator
           no-data-text="Ningún telefono con esa descripción."
@@ -144,9 +111,9 @@
                   flat
                   solo-inverted
                   hide-details
-                  :items="parametro"
+                  :items="params"
                   item-text="texto"
-                  item-value="parametro"
+                  item-value="param"
                   prepend-inner-icon="mdi-magnify"
                   label="Ordenar por:"
                 ></v-select>
@@ -165,7 +132,7 @@
           <template v-slot:default="props">
             <v-row>
               <v-col
-                v-for="(item, index) in props.items"
+                v-for="(anuncio, index) in props.items"
                 :key="index"
                 cols="6"
                 sm="3"
@@ -175,7 +142,7 @@
                   class="mx-auto my-3"
                   elevation="8"
                 >
-                  <v-img height="250" :src="item.imagen[0]">
+                  <v-img height="250" :src="anuncio.imagen[0]">
                     <template v-slot:placeholder>
                       <v-row
                         class="fill-height ma-0"
@@ -190,29 +157,37 @@
                     </template>
                   </v-img>
                   <v-card-title class="pt-3 pb-0">
-                    <div v-if="item.titulo.length < 20">
-                      {{ item.titulo }}
+                    <div v-if="anuncio.titulo.length < 20">
+                      {{ anuncio.titulo }}
                     </div>
                     <div v-else>
-                      {{ item.titulo.substring(0, 20) + ".." }}
+                      {{ anuncio.titulo.substring(0, 20) + ".." }}
                     </div>
                   </v-card-title>
                   <v-card-subtitle class="pb-0">
-                    {{ item.marca }}
+                    {{ anuncio.marca }}
                   </v-card-subtitle>
                   <v-card-text class="text--primary">
-                    <div>${{ item.precio }}</div>
+                    <div>${{ anuncio.precio }}</div>
                     <div class="text-truncate">
-                      {{ item.descripcion }}
+                      {{ anuncio.descripcion }}
                     </div>
-                    <div>{{ item.pantalla }}</div>
-                    <div>{{ item.modelo }}</div>
-                    <div>{{ item.telefono }}</div>
+                    <div>{{ anuncio.pantalla }}</div>
+                    <div>{{ anuncio.sistema }}</div>
+                    <div>{{ anuncio.modelo }}</div>
+                    <div>{{ anuncio.telefono }}</div>
                   </v-card-text>
                   <v-card-actions>
                     <v-btn :to="'/carrito/'" color="orange" text
                       ><v-icon>mdi-cart-outline</v-icon> Agregar al carro
                     </v-btn>
+                     <router-link
+                        :to="{ name: 'Anuncio', params: { id: anuncio.id } }"
+                      >
+                        <v-btn color="primary" class="action-button">
+                          Detalles
+                        </v-btn>
+                      </router-link>
                   </v-card-actions>
                 </v-card>
               </v-col>
@@ -280,6 +255,8 @@
 <script>
 import { db } from "../db";
 export default {
+   name: "About",
+  
   data() {
     return {
       anuncio: [],
@@ -288,6 +265,8 @@ export default {
       itemsPerPageArray: [4, 8, 12, 14, 18, 20],
       sortBy: [],
       busqueda: "",
+      loading: true,
+      backgroundImg: null,
       estados: ["Nuevo", "Usado"],
       estadoSelect: [],
       marcas: ["Samsung", "Huawei", "Nokia", "Iphone", "Xiaomi"],
@@ -297,46 +276,46 @@ export default {
       pantallas: ["5", "5.5", "6"],
       pantallaSelect: [],
       sortDesc: true,
-      parametro: [
-        { texto: "Titulo", parametro: "titulo" },
-        { texto: "Precio", parametro: "precio" },
+      params: [
+        { texto: "Titulo", param: "titulo" },
+        { texto: "Precio", param: "precio" },
       ],
     };
+  },
+  firestore: {
+    anuncio: db.collection("anuncio"),
   },
   computed: {
     numberOfPages() {
       return Math.ceil(this.anuncio.length / this.itemsPerPage);
     },
-    marcasFiltrado(){
-        if (this.marcaSelect.length) return this.marcaSelect;
-        else return this.marcas;
+    marcasFiltrado() {
+      if (this.marcaSelect.length) return this.marcaSelect;
+      else return this.marcas;
     },
-      estadosFiltrado(){
-        if (this.estadoSelect.length) return this.estadoSelect;
-        else return this.estados;
+    estadosFiltrado() {
+      if (this.estadoSelect.length) return this.estadoSelect;
+      else return this.estados;
     },
-      sistemaFiltrado(){
-        if (this.sistemaSelect.length) return this.sistemaSelect;
-        else return this.sistemas;
+    sistemaFiltrado() {
+      if (this.sistemaSelect.length) return this.sistemaSelect;
+      else return this.sistemas;
     },
-      pantallaFiltrado(){
-        if (this.pantallaSelect.length) return this.pantallaSelect;
-        else return this.pantallas;
+    pantallaFiltrado() {
+      if (this.pantallaSelect.length) return this.pantallaSelect;
+      else return this.pantallas;
     },
 
-    anuncioFiltrado(){
-        return this.anuncio.filter((v) => {
-            if (!this.marcasFiltrado.includes(v.marca)) return false;
-            if (!this.estadosFiltrado.includes(v.estado)) return false;
-            if (!this.sistemaFiltrado.includes(v.sistema)) return false;
-            if (!this.pantallaFiltrado.includes(v.pantalla)) return false;
-        })
-    }
+    anuncioFiltrado() {
+      return this.anuncio.filter((v) => {
+        if (!this.marcasFiltrado.includes(v.marca)) return false;
+        if (!this.estadosFiltrado.includes(v.estado)) return false;
+        if (!this.sistemaFiltrado.includes(v.sistema)) return false;
+        if (!this.pantallaFiltrado.includes(v.pantalla)) return false;
+      });
+    },
   },
-  name: "About",
-  firestore: {
-    anuncio: db.collection("anuncio"),
-  },
+
   methods: {
     nextPage() {
       if (this.page + 1 <= this.numberOfPages) this.page += 1;
@@ -350,9 +329,9 @@ export default {
     getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     },
-    filtrarPor(parametro) {
-      if (this.busqueda == parametro) this.busqueda = "";
-      else this.busqueda = parametro;
+    filtrarPor(param) {
+      if (this.busqueda == param) this.busqueda = "";
+      else this.busqueda = param;
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <modal ref="modal" ></modal>
-    <v-app-bar app color="red darken-1" dark>
+    <v-app-bar app color="red darken-1" dark hide-on-scroll dense>
       <v-app-bar-nav-icon
         @click="drawer = true"
         class="d-flex d-md-none"

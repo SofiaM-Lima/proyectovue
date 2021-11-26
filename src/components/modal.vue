@@ -163,7 +163,6 @@
               </v-form>
             </v-col>
           </v-row>
-          <pre>{{ nuevo }}</pre>
         </v-container>
       </v-card>
     </v-dialog>

@@ -88,16 +88,3 @@ export default {
   },
 };
 </script>
-
-<!-- v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-            anuncio: {},
-      items: [
-        {
-          src: "https://www.altonivel.com.mx/wp-content/uploads/2019/01/celulares-2019.jpg",
-        },
-        {
-          src: "https://www.thegamertemple.com/wp-content/uploads/2019/08/lgdgalaxyf3-4d03c24b6dd28d0395ea137660df617a-600x400.jpg",
-        },
-      ],-->

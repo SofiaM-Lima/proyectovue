@@ -96,112 +96,77 @@
         </v-dialog>
       </v-row>
     </div>
-    <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca-->
+
+    <!--Aqui se procede hacer el menu que lleva sistema,pantalla,marca, este es para computadora-->
 
     <v-container>
       <v-row>
-        <v-col col="3" md="3" class="hidden-md-and-down" style="margin-top: 6%">
+        <v-col col="3" md="3" class="hidden-md-and-down" style="margin-top: 4%">
           <div>
             <v-container fluid>
-              <form action="">
-                <v-card elevation="2" style="margin-bottom: 20px">
-                  <div
-                    class="px-0 py-0 mx-0 my-0"
-                    v-for="estado in estados"
-                    :key="estado"
-                  >
-                    <v-col>
-                      <v-switch
-                        color="primary"
-                        class="py-0 my-0"
-                        v-model="estadoSelect"
-                        :label="estado"
-                        :value="estado"
-                      >
-                      </v-switch>
-                    </v-col>
-                  </div>
-                </v-card>
-              </form>
+              <fieldset>
+                <legend>Estado</legend>
+                <form action="#">
+                  <v-radio-group v-model="estadoChange" column>
+                    <v-radio
+                      label="Nuevo"
+                      value="nuevo"
+                      @click="cambio"
+                    ></v-radio>
+                    <v-radio
+                      label="Usado"
+                      value="usado"
+                      @click="cambio"
+                    ></v-radio>
+                    <v-radio
+                      label="Ambos"
+                      value="ambos"
+                      @click="cambio"
+                    ></v-radio>
+                  </v-radio-group>
+                </form>
+              </fieldset>
               <fieldset>
                 <legend>Marca</legend>
                 <form action="#">
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Samsung <sup>15</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Huawei <sup>10</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Nokia <sup>56</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Iphone <sup>4</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Xiaomi <sup>4</sup></span>
-                    </label>
-                  </p>
+                  <div v-for="marca in marcas" :key="marca">
+                    <v-checkbox
+                      class="strech"
+                      v-model="marcasSelected"
+                      :label="marca"
+                      :value="marca"
+                      dense
+                      @click="AnunciosFiltrados"
+                    />
+                  </div>
                 </form>
               </fieldset>
               <fieldset>
                 <legend>Sistema</legend>
                 <form action="#">
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Android <sup>15</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Windows <sup>10</sup></span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> Ios <sup>56</sup></span>
-                    </label>
-                  </p>
+                  <div v-for="sistema in sistemas" :key="sistema">
+                    <v-checkbox
+                      class="strech"
+                      v-model="sistemasSelected"
+                      :label="sistema"
+                      :value="sistema"
+                      dense
+                    />
+                  </div>
                 </form>
               </fieldset>
               <fieldset>
                 <legend>Pantalla</legend>
                 <form action="#">
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> 6.0</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> 5.5</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span> 5.0</span>
-                    </label>
-                  </p>
+                  <div v-for="pantalla in pantallas" :key="pantalla">
+                    <v-checkbox
+                      class="strech"
+                      v-model="pantallasSelected"
+                      :label="pantalla"
+                      :value="pantalla"
+                      dense
+                    />
+                  </div>
                 </form>
               </fieldset>
             </v-container>
@@ -218,8 +183,8 @@
               md="4"
               lg="3"
               xl="2"
-              v-for="i in anuncios"
-              :key="i.titulo"
+              v-for="i in AnunciosFiltrados"
+              :key="i.id"
             >
               <cards :anuncio="i"></cards>
             </v-col>
@@ -273,10 +238,18 @@ export default {
 
       loading: false,
       selection: 1,
-      estados: ["Nuevo", "Usado"],
-      estadoSelect: [],
 
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+
+      marcas: ["Samsung", "Huawei", "Nokia", "IPhone", "Xiaomi", "Otros"],
+      marcasSelected: [],
+      sistemas: ["Android", "iOS", "Windows"],
+      sistemasSelected: [],
+      pantallas: ["6.0", "5.5", "5.0"],
+      pantallasSelected: [],
+      estados: ["Nuevo", "Usado"],
+      estadosSelected: [],
+      estadoChange: "Ambos",
     };
   },
   firestore: {
@@ -285,6 +258,59 @@ export default {
   components: {
     Cards,
   },
-  methods: {},
+  methods: {
+    cambio() {
+      if (this.estadoChange == "nuevo") {
+        this.estadosSelected = ["nuevo"];
+      } else if (this.estadoChange == "usado") {
+        this.estadosSelected = ["usado"];
+      } else {
+        this.estadosSelected = [];
+      }
+    },
+  },
+  computed: {
+    AnunciosFiltrados: function () {
+      return this.anuncios.filter(function (filtro) {
+        if (
+          this.marcasSelected.length > 0 ||
+          this.pantallasSelected.length > 0 ||
+          this.sistemasSelected.length > 0
+        ) {
+          if ((this.marcasSelected.length > 0) & (this.pantallasSelected.length > 0)) {
+            
+            return (
+              
+              this.marcasSelected.includes(filtro.marca) &
+              this.pantallasSelected.includes(filtro.pantalla) 
+            );
+          } else if ((this.marcasSelected.length > 0) & (this.sistemasSelected.length > 0)) {
+            return (
+              this.marcasSelected.includes(filtro.marca) &
+              this.sistemasSelected.includes(filtro.sistema)
+            );
+          } else if ((this.sistemasSelected.length > 0) & (this.pantallasSelected.length > 0)) {
+            return (
+              this.sistemasSelected.includes(filtro.sistema) &
+              this.pantallasSelected.includes(filtro.pantalla) 
+            );
+          } else {
+            return (
+              (this.marcasSelected.includes(filtro.marca) ||
+                this.sistemasSelected.includes(filtro.sistema) ||
+                this.pantallasSelected.includes(filtro.pantalla)) 
+            );
+          }
+        } else {
+          return (
+            !this.marcasSelected.includes(filtro.marca) &
+            !this.sistemasSelected.includes(filtro.sistema) &
+            !this.pantallasSelected.includes(filtro.pantalla)
+          );
+        }
+      }, this);
+    },
+  }
+
 };
 </script>

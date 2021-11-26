@@ -12,87 +12,38 @@
           <v-icon color="red">mdi-filter</v-icon>
         </v-btn>
         <v-dialog v-model="dialog" max-width="200px">
-          <v-card>
-            <legend>Marca</legend>
-            <form action="#">
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Samsung <sup>15</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Huawei <sup>10</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Nokia <sup>56</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Iphone <sup>4</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Xiaomi <sup>4</sup></span>
-                </label>
-              </p>
-            </form>
-            <legend>Sistema</legend>
-            <form action="#">
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Android <sup>15</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Windows <sup>10</sup></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> Ios <sup>56</sup></span>
-                </label>
-              </p>
-            </form>
-            <legend>Pantalla</legend>
-            <form action="#">
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> 6.0</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> 5.5</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input type="checkbox" class="filled-in checkbox-blue" />
-                  <span> 5.0</span>
-                </label>
-              </p>
-            </form>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="red" text @click="dialog = false"> OK </v-btn>
-            </v-card-actions>
-          </v-card>
+          <div class="text-subtitle-1">Marca</div>
+          <div v-for="marca in marcas" :key="marca">
+            <v-checkbox
+              class="strech"
+              v-model="marcasSelected"
+              :label="marca"
+              :value="marca"
+              dense
+            />
+          </div>
+
+         <div class="text-subtitle-1">Sistema</div>
+          <div v-for="sistema in sistemas" :key="sistema">
+            <v-checkbox
+              class="strech"
+              v-model="sistemasSelected"
+              :label="sistema"
+              :value="sistema"
+              dense
+            />
+          </div>
+
+           <div class="text-subtitle-1">Pantalla</div>
+          <div v-for="pantalla in pantallas" :key="pantalla">
+            <v-checkbox
+              class="strech"
+              v-model="pantallasSelected"
+              :label="pantalla"
+              :value="pantalla"
+              dense
+            />
+          </div>
         </v-dialog>
       </v-row>
     </div>
@@ -118,11 +69,11 @@
                       value="usado"
                       @click="cambio"
                     ></v-radio>
-                    <v-radio
+                   <!--  <v-radio
                       label="Ambos"
                       value="ambos"
                       @click="cambio"
-                    ></v-radio>
+                    ></v-radio> -->
                   </v-radio-group>
                 </form>
               </fieldset>
@@ -136,7 +87,6 @@
                       :label="marca"
                       :value="marca"
                       dense
-                      @click="AnunciosFiltrados"
                     />
                   </div>
                 </form>
@@ -277,28 +227,35 @@ export default {
           this.pantallasSelected.length > 0 ||
           this.sistemasSelected.length > 0
         ) {
-          if ((this.marcasSelected.length > 0) & (this.pantallasSelected.length > 0)) {
-            
+          if (
+            (this.marcasSelected.length > 0) &
+            (this.pantallasSelected.length > 0)
+          ) {
             return (
-              
               this.marcasSelected.includes(filtro.marca) &
-              this.pantallasSelected.includes(filtro.pantalla) 
+              this.pantallasSelected.includes(filtro.pantalla)
             );
-          } else if ((this.marcasSelected.length > 0) & (this.sistemasSelected.length > 0)) {
+          } else if (
+            (this.marcasSelected.length > 0) &
+            (this.sistemasSelected.length > 0)
+          ) {
             return (
               this.marcasSelected.includes(filtro.marca) &
               this.sistemasSelected.includes(filtro.sistema)
             );
-          } else if ((this.sistemasSelected.length > 0) & (this.pantallasSelected.length > 0)) {
+          } else if (
+            (this.sistemasSelected.length > 0) &
+            (this.pantallasSelected.length > 0)
+          ) {
             return (
               this.sistemasSelected.includes(filtro.sistema) &
-              this.pantallasSelected.includes(filtro.pantalla) 
+              this.pantallasSelected.includes(filtro.pantalla)
             );
           } else {
             return (
-              (this.marcasSelected.includes(filtro.marca) ||
-                this.sistemasSelected.includes(filtro.sistema) ||
-                this.pantallasSelected.includes(filtro.pantalla)) 
+              this.marcasSelected.includes(filtro.marca) ||
+              this.sistemasSelected.includes(filtro.sistema) ||
+              this.pantallasSelected.includes(filtro.pantalla)
             );
           }
         } else {
@@ -310,7 +267,6 @@ export default {
         }
       }, this);
     },
-  }
-
+  },
 };
 </script>

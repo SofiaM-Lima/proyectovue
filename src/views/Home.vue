@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--Modal para lo del boton de celular-->
-    <div class="hidden-md-and-up" style="margin-top: 15%">
+    <div class="hidden-md-and-up" style="margin-top: 12%">
       <v-row justify="center">
         <!--<div class="text-subtitle-2">Ordenar por:</div>-->
         <v-btn color="blue-grey lighten-4" small style="margin-right: 3%">
@@ -11,39 +11,46 @@
         <v-btn color="grey darken-3" dark @click.stop="dialog = true">
           <v-icon color="red">mdi-filter</v-icon>
         </v-btn>
-        <v-dialog v-model="dialog" max-width="200px">
-          <div class="text-subtitle-1">Marca</div>
-          <div v-for="marca in marcas" :key="marca">
-            <v-checkbox
-              class="strech"
-              v-model="marcasSelected"
-              :label="marca"
-              :value="marca"
-              dense
-            />
-          </div>
 
-         <div class="text-subtitle-1">Sistema</div>
-          <div v-for="sistema in sistemas" :key="sistema">
-            <v-checkbox
-              class="strech"
-              v-model="sistemasSelected"
-              :label="sistema"
-              :value="sistema"
-              dense
-            />
-          </div>
+        <v-dialog v-model="dialog" min-width="30%">
+          <v-card>
+            <div class="text-subtitle-1">Marca</div>
+            <div v-for="marca in marcas" :key="marca">
+              <v-checkbox
+                class="strech"
+                v-model="marcasSelected"
+                :label="marca"
+                :value="marca"
+                dense
+              />
+            </div>
 
-           <div class="text-subtitle-1">Pantalla</div>
-          <div v-for="pantalla in pantallas" :key="pantalla">
-            <v-checkbox
-              class="strech"
-              v-model="pantallasSelected"
-              :label="pantalla"
-              :value="pantalla"
-              dense
-            />
-          </div>
+            <div class="text-subtitle-1">Sistema</div>
+            <div v-for="sistema in sistemas" :key="sistema">
+              <v-checkbox
+                class="strech"
+                v-model="sistemasSelected"
+                :label="sistema"
+                :value="sistema"
+                dense
+              />
+            </div>
+
+            <div class="text-subtitle-1">Pantalla</div>
+            <div v-for="pantalla in pantallas" :key="pantalla">
+              <v-checkbox
+                class="strech"
+                v-model="pantallasSelected"
+                :label="pantalla"
+                :value="pantalla"
+                dense
+              />
+            </div>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="red" text @click="dialog = false"> OK </v-btn>
+            </v-card-actions>
+          </v-card>
         </v-dialog>
       </v-row>
     </div>
@@ -69,7 +76,7 @@
                       value="usado"
                       @click="cambio"
                     ></v-radio>
-                   <!--  <v-radio
+                    <!--  <v-radio
                       label="Ambos"
                       value="ambos"
                       @click="cambio"
@@ -148,30 +155,6 @@
       <br />
       <v-pagination v-model="page" :length="3"></v-pagination>
     </div>
-
-    <v-footer>
-      <v-card flat tile width="100%" class="black white--text text-center">
-        <v-card-text>
-          <v-btn v-for="icon in icons" :key="icon" class="white--text" icon>
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
-          </v-btn>
-        </v-card-text>
-        <v-card-text class="white--text pt-0">
-          Desarrollado por:
-          <strong> Natalia Sofia Martinez Lima ML17002</strong>
-        </v-card-text>
-        <v-card-text class="white--text pt-0">
-          Fundamentos de la programaciòn en internet
-          <strong> Universidad de El Salvador</strong>
-        </v-card-text>
-        <v-divider></v-divider>
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>© All Right Reserved</strong>
-        </v-card-text>
-      </v-card>
-    </v-footer>
   </div>
 </template>
 

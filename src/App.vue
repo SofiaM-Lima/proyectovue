@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <modal ref="modal" ></modal>
+    <modal ref="modal"></modal>
     <v-app-bar app color="red darken-1" dark hide-on-scroll dense>
       <v-app-bar-nav-icon
         @click="drawer = true"
@@ -34,12 +34,22 @@
       <v-btn-toggle title group>
         <v-btn :ripple="false" to="/" class="d-none d-md-flex">Inicio</v-btn>
         <v-btn :ripple="false" to="/estadisticas" class="d-none d-md-flex"
-          >Estadisticas</v-btn >
-        <v-btn class="icon, hidden-md-and-down" :ripple="false" @click="abrirModal">     
-            <v-icon large color="black"> mdi-plus-circle-outline </v-icon>       
+          >Estadisticas</v-btn
+        >
+        <v-btn
+          class="icon, hidden-md-and-down"
+          :ripple="false"
+          @click="abrirModal"
+        >
+          <v-icon large color="black"> mdi-plus-circle-outline </v-icon>
         </v-btn>
         <v-btn class="icon" :ripple="false" to="/carrito">
-          <v-badge color="white">
+          <v-badge
+            color="grey"
+            overlap
+            :content="numeroAnuncios"
+            :value="numeroAnuncios"
+          >
             <v-icon large color="black"> mdi-cart-outline </v-icon>
           </v-badge>
         </v-btn>
@@ -78,13 +88,36 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-    <router-view />
+      <router-view />
     </v-main>
+    <v-card flat tile width="100%" class="black white--text text-center">
+      <v-card-text>
+        <v-btn v-for="icon in icons" :key="icon" class="white--text" icon>
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-text>
+      <v-card-text class="white--text pt-0">
+        <strong> Natalia Sofia Martinez Lima ML17002</strong>
+      </v-card-text>
+      <v-card-text class="white--text pt-0">
+        Fundamentos de la programación en internet
+        <strong> Universidad de El Salvador</strong>
+      </v-card-text>
+
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        {{ new Date().getFullYear() }} — <strong>© All Right Reserved</strong>
+      </v-card-text>
+    </v-card>
   </v-app>
 </template>
 
 <script>
-import modal from "./components/modal.vue"
+import modal from "./components/modal.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     modal,
@@ -95,6 +128,12 @@ export default {
     drawer: false,
     search: "",
     dialog: false,
+    icons: [
+      "mdi-facebook",
+      "mdi-twitter",
+      "mdi-linkedin",
+      "mdi-instagram",
+    ],
     nav: [
       {
         icon: "home",
@@ -114,6 +153,9 @@ export default {
     abrirModal() {
       this.$refs.modal.dialog = true;
     },
+  },
+  computed: {
+    ...mapGetters(["numeroAnuncios"]),
   },
 };
 </script>

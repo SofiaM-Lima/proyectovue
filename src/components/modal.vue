@@ -30,13 +30,11 @@
                   required
                 ></v-select>
 
-                <v-text-field
-                  v-model="nuevo.marca"
-                  :rules="marcaRules"
-                  label="Marca"
-                  type="text"
-                  required
-                ></v-text-field>
+                <v-select
+                 v-model="nuevo.marca"
+                  :items="items3"
+                  label="Marca">       
+                </v-select>
 
                 <v-text-field
                   v-model="nuevo.modelo"
@@ -197,6 +195,7 @@ export default {
       name: "",
       items1: ["Android", "Ios", "Windows"],
       items2: ["6.0", "5.5", "5.0"],
+      items3: ["Samsung", "Huawei", "Nokia", "IPhone", "Xiaomi", "Otros"],
       nameRules: [
         (v) => !!v || "Es requerido llenar el campo",
         (v) =>
@@ -216,11 +215,6 @@ export default {
       descripcionRules: [
         (v) => !!v || "Es requerido llenar el campo",
         (v) => (v && v.length <= 220) || "",
-      ],
-      marca: "",
-      marcaRules: [
-        (v) => !!v || "Es requerido llenar el campo",
-        (v) => (v && v.length <= 20) || "",
       ],
       modelo: "",
       modeloRules: [

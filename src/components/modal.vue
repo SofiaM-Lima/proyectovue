@@ -46,14 +46,12 @@
                   required
                 ></v-text-field>
 
-                <v-text-field
-                  v-model="nuevo.pantalla"
-                  :rules="pantallaRules"
-                  label="Tamaño de la pantalla"
-                  prefix="(Pulgadas)"
-                  type="number"
-                  required
-                ></v-text-field>
+                <v-select
+                 v-model="nuevo.pantalla"
+                  :items="items2"
+                  label="Tamaño de la pantalla">
+                  
+                </v-select>
 
                 <v-select
                   v-model="nuevo.sistema"
@@ -159,7 +157,6 @@
                     required
                   ></v-text-field>
                 </v-col>
-
               </v-form>
             </v-col>
           </v-row>
@@ -179,7 +176,7 @@ export default {
         estado: "",
         marca: null,
         modelo: "",
-        pantalla: 0,
+        pantalla: null,
         precio: 0,
         ram: 0,
         rom: 0,
@@ -199,7 +196,7 @@ export default {
       valid: true,
       name: "",
       items1: ["Android", "Ios", "Windows"],
-      items2: [],
+      items2: ["6.0", "5.5", "5.0"],
       nameRules: [
         (v) => !!v || "Es requerido llenar el campo",
         (v) =>
@@ -227,11 +224,6 @@ export default {
       ],
       modelo: "",
       modeloRules: [
-        (v) => !!v || "Es requerido llenar el campo",
-        (v) => (v && v.length <= 20) || "",
-      ],
-      pantalla: "",
-      pantallaRules: [
         (v) => !!v || "Es requerido llenar el campo",
         (v) => (v && v.length <= 20) || "",
       ],
@@ -297,24 +289,40 @@ export default {
             .then(() => {
               archivo.getDownloadURL().then((url) => {
                 this.nuevo.imagen.push(url);
-                console.log(url);
-                console.log(this.nuevo);
                 temp++;
                 if (temp == this.imagenes.length) {
                   this.modificarBase(id);
-                  //this.cancelar();
-                  this.dialog = false;
+                  this.cancelar();
                 }
               });
             })
             .catch((e) => {
               console.error(e);
-              //this.cancelar();
+              this.cancelar();
             });
         });
       } else {
         console.error("No valido");
       }
+    },
+    cancelar() {
+      this.nuevo.descripcion = "";
+      this.nuevo.estado = "";
+      this.nuevo.marca = null;
+      this.nuevo.modelo = "";
+      this.nuevo.pantalla = null;
+      this.nuevo.precio = "0";
+      this.nuevo.ram = 0;
+      this.nuevo.rom = 0;
+      this.nuevo.sistema = null;
+      this.nuevo.telefono = 0;
+      this.nuevo.titulo = "";
+      this.nuevo.vendedor = "";
+      this.nuevo.imagen = [];
+      this.imagenesUrl = [];
+      this.imagen = null;
+      this.imagenes= []
+      this.dialog = false;
     },
   },
 };
